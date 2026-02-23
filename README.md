@@ -1,59 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplicación Web en Laravel con Autenticación, CRUD y Traducciones
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción General
 
-## About Laravel
+Esta es una aplicación web desarrollada con Laravel que implementa un sistema completo de autenticación de usuarios, gestión de alumnos mediante CRUD, y soporte para múltiples idiomas (Español, Inglés y Francés).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Características Principales
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Estructura y Diseño
+- Diseño moderno basado en componentes Blade HTML
+- Utiliza Tailwind CSS para los estilos
+- Componentes reutilizables: Layout principal, Header, Navegación y Footer
+- Interfaz responsiva y adaptable a diferentes dispositivos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Autenticación
+- Sistema de autenticación seguro con Laravel Fortify
+- Registro de nuevos usuarios
+- Inicio de sesión
+- Cierre de sesión
+- Interfaz adaptativa según el estado de autenticación
 
-## Learning Laravel
+### 3. Gestión de Alumnos (CRUD)
+- **Crear**: Formulario para agregar nuevos alumnos
+- **Leer**: Tabla paginada con listado de alumnos
+- **Actualizar**: Edición de información de alumnos
+- **Eliminar**: Eliminación con confirmación mediante SweetAlert2
+- Validación de formularios con mensajes de error
+- Confirmación de acciones con SweetAlert2
+- Paginación automática (10 alumnos por página)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 4. Campos de Alumno
+- Nombre (obligatorio)
+- Email (obligatorio, único)
+- Teléfono (opcional)
+- Dirección (opcional)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 5. Traducciones Multiidioma
+- Español (es)
+- Inglés (en)
+- Francés (fr)
+- Selector de idioma en la aplicación
+- El idioma se mantiene al navegar
 
-## Laravel Sponsors
+### 6. Gestión de Proyectos
+- Se cargan datos de proyectos inicialmente mediante seeders
+- Accesible desde la navegación principal
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Requisitos para la Ejecución
 
-### Premium Partners
+### Requisitos del Sistema
+- PHP 8.2 o superior
+- Composer
+- Node.js y npm
+- Base de datos (MySQL, PostgreSQL, SQLite, etc.)
+- Git
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Dependencias PHP
+- Laravel 12
+- Laravel Fortify para autenticación
+- Otros paquetes incluidos en composer.json
 
-## Contributing
+### Dependencias JavaScript
+- Tailwind CSS 4.0
+- Alpine.js
+- SweetAlert2
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Pasos para la Instalación
 
-## Code of Conduct
+### 1. Clonar el Repositorio
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd practica-laravel
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Instalar Dependencias PHP
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Configurar el Archivo .env
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Instalar Dependencias JavaScript
+```bash
+npm install
+```
 
-## License
+### 5. Ejecutar Migraciones y Seeders
+```bash
+php artisan migrate
+php artisan db:seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 6. Compilar Assets
+```bash
+npm run build
+```
+
+### 7. Iniciar el Servidor
+```bash
+php artisan serve
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:8000`
+
+## Estructura del Proyecto
+
+```
+practica-laravel/
+├── app/
+│   ├── Models/
+│   │   ├── Alumno.php
+│   │   └── Proyecto.php
+│   └── Http/
+│       ├── Controllers/
+│       │   ├── AlumnoController.php
+│       │   └── LocalizationController.php
+│       └── Middleware/
+│           └── SetLocale.php
+├── database/
+│   ├── migrations/
+│   │   ├── create_alumnos_table.php
+│   │   └── create_proyectos_table.php
+│   └── seeders/
+│       └── ProyectoSeeder.php
+├── resources/
+│   ├── views/
+│   │   ├── layouts/
+│   │   │   └── app.blade.php
+│   │   ├── components/
+│   │   │   ├── header.blade.php
+│   │   │   ├── nav.blade.php
+│   │   │   └── footer.blade.php
+│   │   ├── alumnos/
+│   │   │   ├── index.blade.php
+│   │   │   ├── create.blade.php
+│   │   │   └── edit.blade.php
+│   │   ├── welcome.blade.php
+│   │   └── dashboard.blade.php
+│   ├── lang/
+│   │   ├── es/
+│   │   │   ├── messages.php
+│   │   │   └── alumnos.php
+│   │   ├── en/
+│   │   │   ├── messages.php
+│   │   │   └── alumnos.php
+│   │   └── fr/
+│   │       ├── messages.php
+│   │       └── alumnos.php
+│   └── css/
+│       └── app.css
+├── routes/
+│   └── web.php
+├── bootstrap/
+│   └── app.php
+└── config/
+    └── app.php
+```
+
+## Explicación de Funcionalidades Principales
+
+### Autenticación
+La autenticación es manejada por Laravel Fortify. Los usuarios pueden registrarse, iniciar sesión y cerrar sesión. Las rutas protegidas requieren autenticación.
+
+### CRUD de Alumnos
+- **Index**: Muestra una tabla paginada de alumnos
+- **Create**: Formulario para crear un nuevo alumno
+- **Store**: Guarda el alumno en la base de datos
+- **Edit**: Formulario para editar un alumno existente
+- **Update**: Actualiza los datos del alumno
+- **Delete**: Elimina un alumno con confirmación
+
+### Traducciones
+El sistema utiliza el middleware `SetLocale` para detectar y establecer el idioma. Los usuarios pueden cambiar de idioma mediante el selector en el header.
+
+### Componentes Blade
+- **Layout**: Template principal con estructura HTML común
+- **Header**: Información del usuario y selector de idioma
+- **Nav**: Navegación principal
+- **Footer**: Pie de página con información y enlaces
+
+## Uso del Sistema
+
+### Crear un Alumno
+1. Inicia sesión
+2. Ve a la sección "Alumnos" en el menú
+3. Haz clic en "Crear Alumno"
+4. Completa el formulario y haz clic en "Guardar"
+
+### Editar un Alumno
+1. Ve a la sección "Alumnos"
+2. Haz clic en el icono de editar en la fila del alumno
+3. Actualiza los datos y haz clic en "Guardar"
+
+### Eliminar un Alumno
+1. Ve a la sección "Alumnos"
+2. Haz clic en el icono de eliminar
+3. Confirma la eliminación en el diálogo de SweetAlert2
+
+### Cambiar Idioma
+1. Haz clic en el icono de globo en el header
+2. Selecciona el idioma deseado
+3. La interfaz se actualiza al nuevo idioma
+
+## Control de Versiones (Git)
+
+El proyecto utiliza Git para el control de versiones. Todos los cambios se registran con commits descriptivos.
+
+### Commits Diarios
+Después de cada sesión de trabajo, realiza:
+```bash
+git add .
+git commit -m "Descripción clara de los cambios realizados"
+git push
+```
+
+## Mejoras Implementadas
+
+✅ Protección de rutas mediante middleware  
+✅ Validación de formularios con mensajes traducidos  
+✅ Diseño con Tailwind CSS  
+✅ Control de errores básico  
+✅ Commits descriptivos en Git  
+✅ SweetAlert2 para confirmaciones  
+✅ Paginación de datos  
+✅ Sistema multiidioma completo  
+
+## Pruebas
+
+### Usuario de Prueba
+- Email: test@example.com
+- Contraseña: password
+
+Después de ejecutar `php artisan db:seed`, puedes usar estas credenciales para iniciar sesión.
+
+## Contacto y Soporte
+
+Para preguntas o problemas, por favor crea un issue en el repositorio o contacta al equipo de desarrollo.
+
+---
+
+**Versión**: 1.0  
+**Última actualización**: Febrero 2026  
+**Desarrollado con**: Laravel 12, Tailwind CSS, Alpine.js
+
